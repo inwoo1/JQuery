@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var result = function(a){
+
+            console.log('전달된값:', a)
+
+            if(a % 2 == 0){
+                console.log('짝수')
+            } else {
+                console.log('홀수')
+            }
+
+        };
+
+        var result2 = function(name, x, y, z){
+
+            console.log('전달된값:', name,x,y,z)
+
+            var avg = (x+y+z) / 3 ;
+
+            console.log(name + '님의 평균은:'+ avg);
+            
+            return avg;
+            
+        };
+        
+        result(10);
+        result2('홍길동',85, 95, 90);
+
+
+    </script>
+
+
+
+
+</body>
+</html>
