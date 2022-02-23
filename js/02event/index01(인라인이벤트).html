@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <!-- 이벤트란 프로그램에서의 동작을 의미합니다-->
+        <!-- <button type="button" onclick="alert('버튼클릭');">인라인 이벤트</button> -->
+
+        <button type="button" onclick="check()">체크버튼</button>
+        <script>
+            function check() {
+                alert("버튼클릭");
+            }
+        </script>
+
+        <hr>
+        <h3>여러버튼에 인라인이벤트 적용하기</h3>
+        <button type="button" id="a" onclick="check2(this)">1</button>
+        <button type="button" id="b" onclick="check2(this)">2</button>
+        <button type="button" id="c" onclick="check2(this)">3</button>
+        <button type="button" id="d" onclick="check2(this)">4</button>
+
+        <script>
+            //사용자가 어떤 버튼을 클릭했는가? 확인할 필요가 있다면, 이벤트의 매개변수로 this를 전달합니다.
+            function check2(x) {
+                console.log(x);
+                console.log(x.type);
+                console.log(x.id);
+                
+                x.innerHTML = x.id;
+            }
+
+        </script>
+
+    
+</body>
+</html>
