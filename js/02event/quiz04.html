@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="title">단어를 선택하세요</p>
+
+
+    <!--select에서 value속성은 선택된 값을 의미합니다?-->
+
+    <select id="selector" onchange="cal(this)">
+
+        <option>선택</option>
+        <option>hello</option>
+        <option>안녕하세요</option>
+        <option>듕귁에 달아</option>
+
+    </select>
+
+    <script>
+
+      
+        function cal(x){
+
+            var selector = document.getElementById("selector");
+            var title = document.getElementById("title");
+
+            if (selector.value == "hello"){
+                title.innerHTML = "<h2>영어 입니다</h2>";
+
+            }else if (selector.value == "안녕하세요") {
+                title.innerHTML = "<h2>한국어 입니다</h2>";
+
+            }else if(selector.value == "듕귁에 달아"){
+                title.innerHTML = "<h5>중국어 입니다</h5>";
+                
+            }else {
+                title.innerHTML = "단어를 선택하세요";
+            }
+
+        }
+
+    </script>
+
+    
+</body>
+</html>
