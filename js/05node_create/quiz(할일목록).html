@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>할일 목록 만들어보기</h3>
+
+    <form class="nameForm">
+        <h3 class="nameTitle"></h3>
+        <input type="text" placeholder="이름을 입력하세요">
+        <button type="button" id="nameBtn">확인</button>
+    </form>
+
+    <form class="todoForm">
+        <input type="text" placeholder="할일을 작성하세요">
+        <button type="button" id="todoBtn">확인</button>
+    </form>
+
+    <ul class="todoList">
+
+    </ul>
+
+    <script>
+        
+        var nameBtn = document.getElementById("nameBtn");
+        nameBtn.onclick = function() {
+            
+            var input = document.querySelector(".nameForm > input");
+            var nameTitle = document.querySelector(".nameTitle");
+            input.style.display = "none";
+            nameBtn.style.display = "none";
+            
+            nameTitle.innerHTML = input.value + "님 안녕하세요";
+            
+
+        }
+
+        var todoBtn = document.getElementById("todoBtn");
+        todoBtn.addEventListener("click" , function() {
+
+            var input2 = document.querySelector(".todoForm > input");
+            var todoList = document.querySelector(".todoList");
+            var li = document.createElement("li");
+        
+            li.innerHTML = input2.value + "<button type='button'>X</button>";
+            todoList.appendChild(li); //appenChild에는 태그의 모형만 들어갈 수 있음
+            input2.value = null;
+            
+
+        });
+
+    </script>
+    
+</body>
+</html>
