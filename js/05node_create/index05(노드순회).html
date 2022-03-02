@@ -24,7 +24,7 @@
                 <th>내용</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table">
             <tr>
                 <td>
                     <button type="button" onclick="down(this)">▽</button>
@@ -32,7 +32,7 @@
                 </td>
                 <td>1</td>
                 <td>벌꿀오소리</td>
-                <td>안녕하세요</td>
+                <td>안녕하세요</td> 
                 
             </tr>
             <tr>
@@ -83,15 +83,50 @@
         function down(node){
             console.dir(node);
 
-            console.log(node.parentElement); //부모노드 선택 ( 엘리먼트 형식으로 선택)
-            console.log(node.parentNode); // 부모노드 선택 (text,주석,엘리먼트 형식으로 선택)
+            // console.log(node.parentElement); //부모노드 선택 ( 엘리먼트 형식으로 선택)
+            // console.log(node.parentNode); // 부모노드 선택 (text,주석,엘리먼트 형식으로 선택)
 
-            console.log(node.nextElementSibling); //다음 형제노드
-            console.log(node.previousElementSibling); //이전 형제노드
+            // console.log(node.nextElementSibling); //다음 형제노드
+            // console.log(node.previousElementSibling); //이전 형제노드
 
-            console.log(node.firstElementChild); //첫번째 노드
-            console.log(node.lastElementChild); //마지막 노드
+            // console.log(node.firstElementChild); //첫번째 노드
+            // console.log(node.lastElementChild); //마지막 노드
         
+            var current = node.parentElement.parentElement;
+            var next = current.nextElementSibling;
+
+            console.log(current);
+            console.log(next);
+
+            if(next == null){
+
+                alert("마지막 행입니다");
+                return;
+
+            }
+
+            //insertBefore(삽입노드, 기준노드); //기준노드 앞에 삽입노드를 추가
+            var table = document.querySelector(".table");
+            table.insertBefore(next,current);
+
+
+        }
+
+        function up(node1){
+
+            var current = node1.parentElement.parentElement; //tr
+            var next = current.previousElementSibling; //이전 tr
+
+            console.log(current);
+            console.log(next);
+
+            if(next == null){
+                alert("첫번째 행입니다");
+                return;
+            }
+
+            var table = document.querySelector(".table");  //next앞에 current 추가
+            table.insertBefore(current,next);
 
         }
     </script>

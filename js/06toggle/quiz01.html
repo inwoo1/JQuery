@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .center {text-align: center;}
+        .content {margin: 0 auto; width: 800px; overflow: hidden;}
+        img { width: 100%; height: 100%;}
+        .left {float: left; width: 50%; box-sizing: border-box;}
+        .content, .inner {border: 1px solid #777;}
+        .content, .left {padding: 5px;}
+        .inner {height: 300px;}
+    </style>
+
+</head>
+<body>
+
+
+    <article>
+        <div class="center">
+            <h3 class="white1">style속성 활용하기</h3>
+            <button type="button" id="dark" class="dark1">어둡게보기</button>
+            <button type="button" id="name" class="name1">이름보기</button>
+        </div>
+    </article>
+
+    <hr>
+    <section>
+        <div class="content"> <!--외곽 상자-->
+            <div class="left"> <!--숨김상자-->
+                <div class="inner">
+                    <img src="1.jpg" alt="이미지">
+                </div>
+            </div>   
+
+            <div class="left">
+                <div class="inner">
+                    <p class="white1">자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 프로그래밍에도 사용되고 있다</p>
+                    <a href="#" class="white1">위키백과</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        var dark = document.getElementById("dark");
+        var body = document.body;
+        var white1 = document.querySelectorAll(".white1");
+        var wri = document.querySelectorAll(".inner > .white1");
+
+        dark.onclick = function() {
+            if(dark.classList.contains("dark1")){
+                dark.innerHTML = "밝게보기";
+                dark.classList.remove("dark1");
+
+                body.style.backgroundColor = "black";
+                for(var i = 0 ; i < white1.length; i++){
+                    white1[i].style.color = "white";
+                }
+            }else {
+                dark.innerHTML = "어둡게보기";
+                dark.classList.add("dark1");
+
+                body.style.backgroundColor = "white";
+                for(var i = 0 ; i < white1.length; i++){
+                    white1[i].style.color = "black";
+                }
+            }
+        }
+
+        var name1 = document.getElementById("name");
+        name1.onclick = function() {
+            if(name1.classList.contains("name1")){
+                name1.innerHTML = "내용보기";
+                name1.classList.remove("name1");
+
+                wri[0].innerHTML = "홍길자<br>20세<br>능력단위<br>Java,Oracle,JSP,CSS,<br> Javascript";
+                wri[1].innerHTML = "";
+
+            }else {
+                name1.innerHTML = "이름보기";
+                name1.classList.add("name1");
+
+                wri[0].innerHTML = "자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 프로그래밍에도 사용되고 있다";
+                wri[1].innerHTML = "위키백과";
+            }
+        }
+
+
+    </script>
+
+    
+</body>
+</html>
