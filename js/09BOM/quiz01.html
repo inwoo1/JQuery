@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main-banner {text-align: center;}
+        .main-banner img {display: none; position: relative; animation: fadeIn .5s linear;}
+
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+                top: -50px;
+            } to {
+                opacity: 1;
+                top: 0px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+
+    <div class="main-banner">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+    </div>
+
+    <script>
+        var num = 0;
+        var stop;
+        function change() {
+            var img = document.querySelector(".main-banner");
+
+            img.children[num].style.display = "inline";
+            
+            num++;
+
+            
+            if(num == img.children.length) clearInterval(stop);
+            
+            
+        }
+        
+        (function() {
+           stop = setInterval(change, 500);
+        })();
+    </script>
+
+    
+    
+</body>
+</html>
