@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h3>
+        최신 클릭 목록
+    </h3>
+    <div class="result">
+        
+    </div>
+
+    <script>
+        var recent = JSON.parse( localStorage.getItem("list") );
+        var result = document.querySelector(".result");
+        var img = document.createElement("img");
+        var img2 = document.createElement("img");
+       
+            img.src = recent[0];
+            img2.src = recent[1];
+
+        result.appendChild(img);
+        result.appendChild(img2);
+    </script>
+</body>
+</html>

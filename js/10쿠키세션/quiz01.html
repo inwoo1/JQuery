@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>로컬스토리지를 이용해서 마지막에 클릭한 2가지 정보만 저장</h3>
+
+    <div class="list">
+        <img src="img/1.jpg" width="300">
+        <img src="img/2.jpg" width="300">
+        <img src="img/3.jpg" width="300">
+        <img src="img/4.jpg" width="300">
+    </div>
+
+    <button type="button" id="btn">최신정보확인하기</button>
+
+    <script>
+        //배열을 이용해서 처리   push()로 뒤에 넣고 shift() 를 이용하여 앞에 삭제
+        var arr = new Array();
+        var list = document.querySelector(".list");
+        list.onclick = function() {
+
+            if(event.target.tagName != "IMG") return; 
+            
+            setStorage(event.target); 
+            
+        }
+        function setStorage(img){
+            //로컬스토리지에 값이 있다면, arr에 추가한다
+            if(localStorage.getItem("list") != null) {
+                arr = JSON.parse( localStorage.getItem("list") );
+            }
+            if(arr.length >= 2){
+                arr.shift();
+            }
+            
+            arr.push(img.src); //이미지 src값을 배열에 추가합니다
+            localStorage.setItem( "list", JSON.stringify(arr) );
+            
+
+    }
+    
+    var btn = document.getElementById("btn");
+    btn.onclick  = function() {
+        
+            window.open('quiz01_result.html', 'result', 'width=700 , height=500')
+
+        }
+
+            
+    </script>
+    
+</body>
+</html>
