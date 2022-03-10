@@ -23,14 +23,24 @@
     <script>
         var recent = JSON.parse( localStorage.getItem("list") );
         var result = document.querySelector(".result");
-        var img = document.createElement("img");
-        var img2 = document.createElement("img");
-       
-            img.src = recent[0];
-            img2.src = recent[1];
 
-        result.appendChild(img);
-        result.appendChild(img2);
+        if( recent != null){
+
+            for(var i = 0; i < recent.length; i++){
+
+                var img = document.createElement("img");
+                img.src = recent[i];
+                result.appendChild(img);
+
+            }         
+
+        } else {
+
+            var div = document.createElement("div");
+            div.innerHTML = '최신 클릭 목록이 없습니다';
+            result.appendChild(div);
+        }
+       
     </script>
 </body>
 </html>
