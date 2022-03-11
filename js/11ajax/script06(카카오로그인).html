@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 카카오 SDK 로드-->
+    <script src="js/kakao.js"></script>
+    <!-- 카카오버튼 디자인-->
+    <style>
+        .kakaoBtn {
+            background-image: url(img/kakao_login_medium_narrow.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #FEE500;
+            border: none;
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="##" method="post" name="loginForm">
+        아이디:<input type="text" name="id"><br>
+        비밀번호:<input type="password" name="pw"><br>
+        <input type="submit" value="로그인">
+    </form>
+    
+    <button type="button" class="kakaoBtn" onclick="kakaLogin();"></button>
+    <button type="button" onclick="kakaLogout();">카카오로그아웃</button>
+
+    <script>
+        //1.카카오 SDK실행
+        //2.플랫폼 등록
+        //3.로그인 활성화 설정
+        //4.동의항목 구성
+        Kakao.init('197d0e601b5126c562b9a6529d292d67');
+
+        //SDK 초기화 여부를 판단합니다.
+        // console.log(Kakao.isInitialized());
+
+    //5. 카카오 로그인 버튼
+    function kakaLogin(){
+        Kakao.Auth.login({
+            success: function(response){
+                // console.log(response);
+
+                //6. 사용자 정보를 사용하기 위해 어세스토큰을 저장
+                Kakao.Auth.setAccessToken(response.access_token);
+
+                //7. 유저정보 요청
+                getInfo();
+            },
+            fail: function(error){
+                console.log(error);
+            },       
+        });
+    }
+
+
+    function getInfo() {
+        Kakao.API.request({
+            url: '/v2/user/me',
+            success: function(response) {
+                console.log(response);
+                console.log(response.kakao_account.email); //사용자 이메일
+                console.log(response.kakao_account.profile.nickname); //사용자 닉네임
+
+                //JS코드로 응용
+                document.loginForm.id = response.kakao_account.email;
+                // document.loginForm.submit();
+            },
+            fail: function(error) {
+                console.log(error);
+            }
+        });
+    }
+    //8. 카카오 로그아웃 - 어세스토큰의 만료
+    function kakaLogout() {
+        if (!Kakao.Auth.getAccessToken()) {
+            console.log('Not logged in.');
+            return;
+        }
+        Kakao.Auth.logout(function() {
+            console.log(Kakao.Auth.getAccessToken());
+            //JS로 로그아웃처리 ..
+        });
+    }
+    </script>
+    
+</body>
+</html>
