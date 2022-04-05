@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 제이쿼리 링크 다운받아서 링크 or 원격파일 링크-->
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+    <input type="text" id="apple" value="홍길동">
+    <input type="text" class="melon" value="이순신">
+    <input type="hidden" value="신사임당">    
+
+    <script>
+        var a = document.getElementById("apple");
+        console.log(a);
+
+        var a2 = $("#apple");
+        console.log(a2);
+
+        var a3 = $("#apple")[0];
+        console.log(a3);
+
+        console.log("---------------------------------------------")
+
+        var b = document.querySelector(".melon");
+        console.log(b.value);
+        
+        var b2 = $(".melon").val();
+        console.log(b2);
+
+        var b3 = $("input[type='hidden']").val();
+        console.log(b3);
+    </script>
+    
+    
+</body>
+</html>

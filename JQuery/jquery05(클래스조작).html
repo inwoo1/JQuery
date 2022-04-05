@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+        <button id="btn" class="btn btn-default">클래스조작테스트</button>
+    
+        <script>
+            // document.getElementById("btn").classList.add("myBtn");
+            // document.getElementById("btn").classList.remove("myBtn");
+
+            $("#btn").addClass("myBtn");
+        </script>
+
+
+        <button id="toggle" class="dark">토글조작 테스트</button>
+
+        <script>
+            //토글 - 하나의 버튼으로 클래스를 조작해서 2가지 기능을 수행
+            document.getElementById("toggle").onclick = function() {
+
+                //document.getElementById("toggle").classList.toggle("aaa");
+                $("#toggle").toggleClass("aaa"); //제이쿼리문법
+            }
+
+        </script>
+
+        <hr>
+
+
+        <button id="test" class="test aaa">실습</button>
+
+        <script>
+            //test버튼의 토글기능을 이용해서 aaa클래스가 있다면 body의 배경색을 검은색
+            //bbb클래스가있다면 배경을 흰색
+            document.getElementById("test").onclick = function() {
+
+               if($("#test").hasClass("aaa")){
+
+                    $("#test").addClass("bbb");
+                    $("#test").removeClass("aaa");
+                    $("body").css("backgroundColor", "black");
+
+
+               } else if($("#test").hasClass("bbb")) {
+
+                    $("#test").addClass("aaa");
+                    $("#test").removeClass("bbb");
+                    $("body").css("backgroundColor", "white");
+
+               }
+
+            }
+
+        </script>
+</body>
+</html>
